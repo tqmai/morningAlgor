@@ -1,6 +1,7 @@
 // 2.1 (page 94): Remove Dups: Write code to remove duplicates from an unsorted linked list. 
 // FOLLOW UP: How would you solve this problem if a temporary buffer is not allowed?
 
+// this constructor function does the same thing as the class below
 // function Node(val) {
 //   this.val = val;
 //   this.next = null;
@@ -13,12 +14,17 @@ class Node {
   }
 }
 
-// solution below does not use a temporary buffer
+// solution below uses a temporary buffer
 // input: first node of some linked list
-// output: none
+// output: first node of that linked list
 // O(n) time complexity
 // O(n) space complexity
 function removeDups(head) {
+  // if no head, return undefined
+  if (!head) {
+    return undefined;
+  }
+  
   // create cache of values
   const cache = new Set();
 
@@ -41,6 +47,8 @@ function removeDups(head) {
       cur = cur.next;
     }
   }
+
+  return head;
 }
 
 // solution below does not use a temporary buffer
@@ -49,6 +57,11 @@ function removeDups(head) {
 // O(n^2) time complexity
 // O(1) space complexity
 function removeDups2(head) {
+  // if no head, return undefined
+  if (!head) {
+    return undefined;
+  }
+  
   // create two pointers
   let point1 = head;
   let point2 = head;
@@ -59,33 +72,17 @@ function removeDups2(head) {
       // if point2.val === curr.val, remove it from linked list
       if (point2.next.val === point1.val) {
         point2.next = point2.next.next;
-        // console.log(point2);
       } else {
         // else move to the next node in the list
         point2 = point2.next;
-        // console.log(point2);
       }
     }
     // once you exit the inner loop, move point1 to the next node
     point1 = point1.next;
-    // console.log(point1)
 
     // have point2 equal point1
     point2 = point1;
-    // console.log(point2);
   }
+
+  return head;
 }
-
-const a = new Node(1);
-const b = new Node(2);
-a.next = b;
-const c = new Node(2);
-b.next = c;
-const d = new Node(3);
-c.next = d;
-
-// console.log(a);
-
-// removeDups2(a);
-
-// console.log(a);
