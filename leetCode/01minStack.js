@@ -18,47 +18,41 @@
 // minStack.getMin();   --> Returns -2.
 
 
-/**
- * initialize your data structure here.
- */
-var MinStack = function () {
 
+
+/**
+ * @return {number}
+ */
+MinStack.prototype.top = function() {
+  if (this.index === 0) {
+      return undefined;
+  }
+  
+  return this.store[this.index - 1];
+};
+
+/**
+* @return {number}
+*/
+MinStack.prototype.getMin = function() {
+  // this variable will be compared to all the values in the store
+  let min = Infinity;
+  
+  // iterate through all the values and compare them to min
+  for (const key in this.store) {
+      if (this.store[key] < min) {
+          min = this.store[key];
+      }
+  }
+  
+  return min;
 };
 
 /** 
- * @param {number} x
- * @return {void}
- */
-MinStack.prototype.push = function (x) {
-
-};
-
-/**
- * @return {void}
- */
-MinStack.prototype.pop = function () {
-
-};
-
-/**
- * @return {number}
- */
-MinStack.prototype.top = function () {
-
-};
-
-/**
- * @return {number}
- */
-MinStack.prototype.getMin = function () {
-
-};
-
-/**
- * Your MinStack object will be instantiated and called as such:
- * var obj = new MinStack()
- * obj.push(x)
- * obj.pop()
- * var param_3 = obj.top()
- * var param_4 = obj.getMin()
- */
+* Your MinStack object will be instantiated and called as such:
+* var obj = new MinStack()
+* obj.push(x)
+* obj.pop()
+* var param_3 = obj.top()
+* var param_4 = obj.getMin()
+*/
