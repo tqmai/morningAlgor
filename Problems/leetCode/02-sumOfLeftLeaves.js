@@ -1,5 +1,5 @@
 /*
-Find the sum of all left leaves in a given binary tree.
+Find the sum of all left leaves in a given binary tree. A leaf is a node with no children.
 
 Example:
 
@@ -16,13 +16,15 @@ There are two left leaves in the binary tree, with values 9 and 15 respectively.
  * Definition for a binary tree node.
  * function TreeNode(val) {
  *     this.val = val;
- *     this.left = this.right = null;
+ *     this.left = null;
+ *     this.right = null;
  * }
  */
+
 /**
  * @param {TreeNode} root
  * @return {number}
  */
-var sumOfLeftLeaves = function(root) {
-  
+const sumOfLeftLeaves = function (root) {
+
 };
