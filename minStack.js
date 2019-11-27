@@ -15,7 +15,7 @@ const MinStack = function () {
 MinStack.prototype.push = function (element) {
   this.stack[this.lengthOfStack] = element;
   this.lengthOfStack += 1;
-  if (element < this.minimumValueStack[this.lengthOfMinimumValueStack - 1]
+  if (element <= this.minimumValueStack[this.lengthOfMinimumValueStack - 1]
     || this.lengthOfMinimumValueStack === 0) {
     this.minimumValueStack[this.lengthOfMinimumValueStack] = element;
     this.lengthOfMinimumValueStack += 1;
@@ -27,12 +27,10 @@ MinStack.prototype.push = function (element) {
  */
 MinStack.prototype.pop = function () {
   if (this.lengthOfStack < 1) {
-    return undefined;
+    return 0;
   }
   this.lengthOfStack -= 1;
   const valueToReturn = this.stack[this.lengthOfStack];
-  console.log(valueToReturn);
-  console.log(this.minimumValueStack[this.lengthOfMinimumValueStack - 1]);
   delete this.stack[this.lengthOfStack];
   if (valueToReturn === this.minimumValueStack[this.lengthOfMinimumValueStack - 1]) {
     this.lengthOfMinimumValueStack -= 1;
@@ -52,21 +50,28 @@ MinStack.prototype.top = function () {
  * @return {number}
  */
 MinStack.prototype.getMin = function () {
+  if (this.lengthOfMinimumValueStack < 1) {
+    return 0;
+  }
   return this.minimumValueStack[this.lengthOfMinimumValueStack - 1];
 };
 
 // Tests:
-// const test = new MinStack();
-// test.push(-2);
-// test.push(0);
-// test.push(-3);
+const test = new MinStack();
+test.push(2);
+test.push(0);
+test.push(3);
+test.push(0);
 
-// console.log(test);
+console.log(test);
 
-// test.getMin(); // --> Returns -3.
-// test.pop();
-// test.top(); // --> Returns 0.
-// test.getMin(); // --> Returns -2.
+console.log(test.getMin());
+test.pop();
+test.top();
+console.log(test.getMin());
+test.pop();
+console.log(test.getMin());
+test.pop();
 
-// console.log(test);
-// console.log(test.getMin());
+console.log(test);
+console.log(test.getMin());
