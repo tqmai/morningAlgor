@@ -9,6 +9,7 @@ function TreeNode(val) {
  * @param {TreeNode} root
  * @return {number}
  */
+
 const sumOfLeftLeaves = function (root) {
   let sum = 0;
   if (root.left) {
@@ -23,6 +24,7 @@ const sumOfLeftLeaves = function (root) {
   return sum;
 };
 
+// solution using a queue instead of recursion
 const iterativeSumOfLeftLeaves = function (root) {
   if (root === null) {
     return 0;
@@ -36,7 +38,7 @@ const iterativeSumOfLeftLeaves = function (root) {
     // check if left node exist & add to queue
     if (currentNode.left) {
       queue.push(currentNode.left);
-      // if left node exist, check if it is a leave
+      // if left node exist, check if it is a leaf
       if (!currentNode.left.left && !currentNode.left.right) sum += currentNode.left.val;
     }
     // check if right node exist & add to queue
@@ -47,14 +49,14 @@ const iterativeSumOfLeftLeaves = function (root) {
 };
 
 // Example:
-const bst = new TreeNode(5);
-bst.left = new TreeNode(3);
-bst.left.left = new TreeNode(1);
-bst.left.right = new TreeNode(2);
-bst.right = new TreeNode(7);
-bst.right.left = new TreeNode(6);
-bst.right.right = new TreeNode(8);
+// const bst = new TreeNode(5);
+// bst.left = new TreeNode(3);
+// bst.left.left = new TreeNode(1);
+// bst.left.right = new TreeNode(2);
+// bst.right = new TreeNode(7);
+// bst.right.left = new TreeNode(6);
+// bst.right.right = new TreeNode(8);
 
 // console.log(bst);
-// console.log(iterativeSumOfLeftLeaves(bst));
+// console.log(sumOfLeftLeaves(bst));
 // console.log(iterativeSumOfLeftLeaves(bst));

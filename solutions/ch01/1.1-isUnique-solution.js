@@ -21,6 +21,7 @@ function isUnique(str) {
     chars.add(str[i]);
   }
     
+  // return true
   return true;
 }
 
@@ -49,9 +50,17 @@ function isUnique2(str) {
 // input: array of characters
 // output: boolean
 function isUnique3(str) {
-  sortedArr = str.split('').sort();
+  // sort str (in place)
+  str.sort();
 
-  return sortedArr.every((char, i) => char !== str[i + 1]);
+  // iterate through str
+  // if a character is the same as the adjacent character, return false
+  for (let i = 0; i < str.length - 1; i += 1) {
+    if (str[i] === str[i + 1]) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
-console.log(isUnique3('helo'));
