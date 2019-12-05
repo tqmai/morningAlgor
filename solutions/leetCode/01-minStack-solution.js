@@ -21,6 +21,9 @@
 /**
  * initialize your data structure here.
  */
+
+// Solution using no array methods.
+
 const MinStack = function () {
   this.stack = [];
   this.lengthOfStack = 0;
@@ -51,10 +54,8 @@ MinStack.prototype.pop = function () {
   }
   this.lengthOfStack -= 1;
   const valueToReturn = this.stack[this.lengthOfStack];
-  delete this.stack[this.lengthOfStack];
   if (valueToReturn === this.minimumValueStack[this.lengthOfMinimumValueStack - 1]) {
     this.lengthOfMinimumValueStack -= 1;
-    delete this.minimumValueStack[this.lengthOfMinimumValueStack];
   }
   return valueToReturn;
 };
