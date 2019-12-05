@@ -38,6 +38,39 @@
 //   /
 //  1
 
+// Example 3:
+
+// Input:
+//     3
+//    / \
+//   0   4
+//    \
+//     2
+//    /
+//   1
+
+//   L = 1
+//   R = 2
+
+// Output:
+//    2
+//   /
+//  1
+
+
+
+//     2
+//    /
+//   1
+
+
+const threenode = 'threenode';
+const twonode = 'twonode';
+
+let root = threenode;
+root = twonode;
+
+
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
