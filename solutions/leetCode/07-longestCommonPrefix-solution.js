@@ -1,4 +1,5 @@
 /*
+leetcode #14
 Given an array of strings, return the longest common prefix.
 
 e.g. const sampleArray = ['abcdef', 'abcghi', 'abcabc'] --> 'abc'
@@ -13,8 +14,8 @@ const longestCommonPrefix = (strings) => {
       longestString = string.length;
     }
   });
-  for (let i = 0; i < longestString; i += 1) {
-    let currentChar = '';
+  for (let i = 0; i < longestString; i += 1) { // i is position of character we checking (index)
+    let currentChar = ''; // a
     for (let k = 0; k < strings.length; k += 1) {
       const string = strings[k];
       if (currentChar.length === 0) {
@@ -30,5 +31,5 @@ const longestCommonPrefix = (strings) => {
   return buildReturnString;
 };
 
-// const exampleStrings = ['abcdef', 'abcdghi', 'abcdabc'];
-// console.log(solution(exampleStrings));
+const exampleStrings = ['abcef', 'abcghi', 'abcabc'];
+console.log(longestCommonPrefix(exampleStrings));
