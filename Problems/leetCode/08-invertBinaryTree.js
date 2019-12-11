@@ -28,24 +28,25 @@ Output:
  *     this.left = this.right = null;
  * }
  */
+
 /**
  * @param {TreeNode} root
  * @return {TreeNode}
  */
 const invertTree = function(root) {
-    // if root doesn't exist, then return null
-    if (!root) {
-      return null;
-    }
+  // if root doesn't exist, then return null
+  if (!root) {
+    return null;
+  }
 
-    // swap the positions of root.left and root.right
-    [root.left, root.right] = [root.right, root.left];
+  // swap the positions of root.left and root.right
+  [root.left, root.right] = [root.right, root.left];
 
-    // recursive call invertTree on both sides
-    invertTree(root.right);
-    invertTree(root.left);
+  // recursive call invertTree on both sides
+  invertTree(root.right);
+  invertTree(root.left);
 
-    return root;
+  return root;
 };
 
 /**
