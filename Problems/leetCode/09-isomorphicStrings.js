@@ -27,8 +27,8 @@ You may assume both str1 and str2 have the same length.
 */
 
 /**
- * @param {string} s
- * @param {string} t
+ * @param {string} str1
+ * @param {string} str2
  * @return {boolean}
  */
 
