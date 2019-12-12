@@ -64,9 +64,7 @@ const invertTreeIterative = function(root) {
   while (stack.length > 0) {
     currentNode = stack.pop();
     if (currentNode !== null) {
-      const temp = currentNode.left;
-      currentNode.left = currentNode.right;
-      currentNode.right = temp;
+      [currentNode.left, currentNode.right] = [currentNode.right, currentNode.left];
       stack.push(currentNode.left);
       stack.push(currentNode.right);
     }
