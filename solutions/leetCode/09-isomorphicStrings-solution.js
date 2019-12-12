@@ -65,7 +65,69 @@ const isIsomorphicLinear = function(str1, str2) {
   return true;
 };
 
-console.log(isIsomorphicQuadratic('eoo', 'add'));
-console.log(isIsomorphicQuadratic('eod', 'add'));
-console.log(isIsomorphicQuadratic('eed', 'aaf'));
-console.log(isIsomorphicQuadratic('eed', 'aoc'));
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ * solution from Tim
+ */
+const isIsomorphic3 = function(s, t) {
+  // create pairs object
+  const pairs = {};
+
+  // iterate through s
+  for (let i = 0; i < s.length; i += 1) {
+    // set variable pointing at current char of s
+    const curChar = s[i];
+    
+    // if current char is not in pairs, add it to it 
+    // set the corresponding character in t as its value
+    if (!pairs[curChar]) {
+      // but first check to see if another char already maps to this same char in t
+      // aka if another key in pairs has the same value as this one
+      // if yes, return false
+      if (Object.values(pairs).includes(t[i])) {
+        return false;
+      }
+
+      pairs[curChar] = t[i];
+    }
+
+    // if the current char is in pairs, check if the corresponding char in t matches 
+    // that of the value in pairs
+    if (pairs[curChar] !== t[i]) {
+      // if it does not match, return false
+      return false;
+    }
+  }
+
+  // return true
+  return true;
+};
+
+
+// alternative solution found on leetcode
+var isIsomorphic2 = function(s, t) {
+  var obj = {};
+
+  for (var i = 0; i < s.length; i++) {
+    if (!obj['s' + s[i]]) {
+      obj['s' + s[i]] = t[i];
+    } 
+
+    if (!obj['t' + t[i]]) {
+      obj['t' + t[i]] = s[i];
+    } 
+
+    if (t[i] != obj['s' + s[i]] || s[i] != obj['t' + t[i]]) {
+      return false;
+    } 
+  }
+
+  return true;
+};
+
+// console.log(isIsomorphicQuadratic('eoo', 'add'));
+// console.log(isIsomorphicQuadratic('eod', 'add'));
+// console.log(isIsomorphicQuadratic('eed', 'aaf'));
+// console.log(isIsomorphicQuadratic('eed', 'aoc'));
