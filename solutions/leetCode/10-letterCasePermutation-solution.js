@@ -47,4 +47,4 @@ const letterCasePermutation = function(str) {
   return stringArray;
 };
 
-console.log(letterCasePermutation('1BC'));
+console.log(letterCasePermutation('1BCD'));
