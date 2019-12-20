@@ -71,7 +71,7 @@ const sumEvenAfterQueriesLinear = function (arr, queries) {
     if (sum % 2 === 0 && arrCopy[index] % 2 === 0) {
       evenSum += value;
     } else if (sum % 2 === 0) {
-      evenSum += (value + arrCopy[index]);
+      evenSum += sum;
     } else if (arrCopy[index] % 2 === 0) {
       evenSum -= arrCopy[index];
     }
