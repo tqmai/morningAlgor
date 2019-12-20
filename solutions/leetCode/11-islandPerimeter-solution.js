@@ -56,6 +56,35 @@ const islandPerimeter = function (grid) {
   return perimeter;
 };
 
+/* Alternate syntax, same concept solution:
+
+const islandPerimeter = function (grid) {
+  let perimeter = 0;
+
+  grid.forEach((innerArray, i) => {
+    innerArray.forEach((tile, k) => {
+      if (tile === 1) {
+        if (i === 0 || grid[i - 1][k] !== 1) {
+          perimeter += 1;
+        }
+        if (k === innerArray.length - 1 || grid[i][k + 1] !== 1) {
+          perimeter += 1;
+        }
+        if (i === grid.length - 1 || grid[i + 1][k] !== 1) {
+          perimeter += 1;
+        }
+        if (k === 0 || grid[i][k - 1] !== 1) {
+          perimeter += 1;
+        }
+      }
+    });
+  });
+
+  return perimeter;
+};
+
+*/
+
 const sampleArrays = [
   [0, 1, 0, 0],
   [1, 1, 1, 0],
