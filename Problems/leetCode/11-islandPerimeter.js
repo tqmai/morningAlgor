@@ -31,3 +31,12 @@ Output: 16
 const islandPerimeter = function (grid) {
   
 };
+
+const sampleArray = [
+  [0, 1, 0, 0],
+  [1, 1, 1, 0],
+  [0, 1, 0, 0],
+  [1, 1, 0, 0],
+];
+
+console.log(islandPerimeter(sampleArray)); // -> 16
