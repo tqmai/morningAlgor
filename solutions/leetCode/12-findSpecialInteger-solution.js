@@ -27,22 +27,31 @@ const findSpecialInteger = function(arr) {
   let currentCount = 0;
   let currentNum = arr[0];
 
-  arr.forEach((num) => {
+  for (let i = 0; i < arr.length; i += 1) {
+    const num = arr[i];
     if (num === currentNum) {
       currentCount += 1;
-      if (currentCount > maxCount) {
-        maxNum = currentNum;
-        maxCount = currentCount;
+      if (currentCount > arr.length / 4) {
+        return num;
       }
     } else {
       currentNum = num;
       currentCount = 1;
     }
-  });
+  }
 
-  return maxNum;
+  return currentNum;
 };
 
+// currently incomplete :)
+// const findSpecialIntegerLogN = function (arr) {
+//   const fourthOfLength = arr.length / 4;
+//   let currentNum = arr[Math.floor(fourthOfLength)];
 
+//   console.log(currentNum);
+
+// };
+
+// MORE THAN 25%, hence GREATER THAN length / 4
 console.log(findSpecialInteger([1, 2, 3, 3])); // -> 3
-console.log(findSpecialInteger([1, 2, 2, 3, 4, 4, 4, 5, 6, 6, 7, 7])); // -> 4
+console.log(findSpecialInteger([1, 2, 2, 3, 4, 4, 4, 5, 6, 6, 7])); // -> 4
