@@ -33,7 +33,7 @@ Notes:
     Your code should preferably run in O(n) time and use only O(1) memory.
     */
 
-    /**
+/**
  * Definition for singly-linked list.
  * function ListNode(val) {
  *     this.val = val;

@@ -64,3 +64,4 @@ const averageOfLevels = function (root) {
 // sampleTree.right.right = new TreeNode(7);
 
 // console.log(averageOfLevels(sampleTree));
+
