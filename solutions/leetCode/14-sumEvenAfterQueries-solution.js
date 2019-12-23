@@ -15,7 +15,7 @@ to the i-th query.
 
 Example 1:
 
-Input: A = [1,2,3,4], queries = [[1,0],[-3,1],[-4,0],[2,3]]
+Input: arr = [1,2,3,4], queries = [[1,0],[-3,1],[-4,0],[2,3]]
 Output: [8,6,2,4]
 Explanation:
 At the beginning, the array is [1,2,3,4].
@@ -71,7 +71,7 @@ const sumEvenAfterQueriesLinear = function (arr, queries) {
     if (sum % 2 === 0 && arrCopy[index] % 2 === 0) {
       evenSum += value;
     } else if (sum % 2 === 0) {
-      evenSum += (value + arrCopy[index]);
+      evenSum += sum;
     } else if (arrCopy[index] % 2 === 0) {
       evenSum -= arrCopy[index];
     }
