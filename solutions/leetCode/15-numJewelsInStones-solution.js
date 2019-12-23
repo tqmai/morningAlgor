@@ -30,7 +30,16 @@ Note:
  * @return {number}
  */
 const numJewelsInStones = function(jewels, stones) {
-  
+  const tracker = new Set(jewels);
+  let total = 0;
+
+  for (let i = 0; i < stones.length; i += 1) {
+    if (tracker.has(stones[i])) {
+      total += 1;
+    }
+  }
+
+  return total;
 };
 
 // Sample tests:
