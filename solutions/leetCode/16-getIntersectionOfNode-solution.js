@@ -47,7 +47,48 @@ function ListNode(val) {
  * @return {ListNode}
  */
 
+const listForEach = function (head, callback) {
+  let currentNode = head;
+  while (currentNode !== null) {
+    callback(currentNode);
+    currentNode = currentNode.next;
+  }
+};
 
 const getIntersectionNode = function (headA, headB) {
-  
+  const seenNodesA = new Set();
+  let currentNode = headA;
+
+  // listForEach(headA, (currentNode) => {
+  //   seenNodesA.add(currentNode);
+  // });
+
+  while (currentNode !== null) {
+    seenNodesA.add(currentNode);
+    currentNode = currentNode.next;
+  }
+
+  currentNode = headB;
+
+  while (currentNode !== null) {
+    if (seenNodesA.has(currentNode)) {
+      return currentNode;
+    }
+    currentNode = currentNode.next;
+  }
+
+  return null;
 };
+
+// Tests:
+
+const listHeadA = new ListNode(1);
+listHeadA.next = new ListNode(2);
+listHeadA.next.next = new ListNode(3);
+listHeadA.next.next.next = new ListNode(4);
+
+const listHeadB = new ListNode(6);
+listHeadB.next = new ListNode(7);
+// listHeadB.next.next = listHeadA.next.next;
+
+console.log(getIntersectionNode(listHeadA, listHeadB));
