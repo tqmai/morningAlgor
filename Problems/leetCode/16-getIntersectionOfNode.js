@@ -47,5 +47,5 @@ Notes:
  * @return {ListNode}
  */
 const getIntersectionNode = function(headA, headB) {
-    
+  
 };
