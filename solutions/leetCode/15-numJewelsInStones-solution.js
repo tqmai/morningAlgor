@@ -29,7 +29,7 @@ Note:
  * @param {string} S
  * @return {number}
  */
-const numJewelsInStones = function(jewels, stones) {
+const numJewelsInStones = function (jewels, stones) {
   const tracker = new Set(jewels);
   let total = 0;
 
