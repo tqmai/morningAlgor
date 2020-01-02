@@ -56,7 +56,7 @@ Note:
  * @return {boolean}
  */
 const lemonadeChange = function (bills) {
-  const billTracker = {};
+  const billTracker = { 5: 0, 10: 0, 20: 0 };
 
   for (let i = 0; i < bills.length; i += 1) {
     if (bills[i] > 10) {
@@ -77,4 +77,4 @@ const lemonadeChange = function (bills) {
   return true;
 };
 
-console.log(lemonadeChange([5, 5, 10, 10, 10]));
+console.log(lemonadeChange([20]));
