@@ -55,26 +55,76 @@ Note:
  * @param {number[]} bills
  * @return {boolean}
  */
-const lemonadeChange = function (bills) {
-  const billTracker = { 5: 0, 10: 0, 20: 0 };
+
+// Simpler solution hard coded possibilities, O(n) time/space
+
+const lemonadeChangeSimple = function (bills) {
+  const register = { 5: 0, 10: 0, 20: 0 };
 
   for (let i = 0; i < bills.length; i += 1) {
-    if (bills[i] > 10) {
-      billTracker['10'] -= 1;
-      if (billTracker['10'] < 0) {
+    const payment = bills[i];
+    if (payment === 20) {
+      if (register[10] > 0 && register[5] > 0) {
+        register[10] -= 1;
+        register[5] -= 1;
+      } else if (register[5] >= 3) {
+        register[5] -= 3;
+      } else {
         return false;
       }
     }
-    if (bills[i] > 5) {
-      billTracker['5'] -= 1;
-      if (billTracker['5'] < 0) {
+    if (payment === 10) {
+      if (register[5] > 0) {
+        register[5] -= 1;
+      } else {
         return false;
       }
     }
-    billTracker[bills[i]] = (billTracker[bills[i]] || 0) + 1;
+    register[payment] += 1;
   }
 
   return true;
 };
 
-console.log(lemonadeChange([20]));
+// ***** This alternate solution is more dynamic/scalable, but probably not best practice due to the
+// way the helper function is set up to directly mutate the contents of billTracker *****
+
+const updateChange = function (changeDue, bill, billTracker) {
+  if (changeDue / bill >= 1) {
+    const numOfBillNeeded = Math.floor(changeDue / bill);
+    if (numOfBillNeeded >= billTracker[bill]) {
+      changeDue -= billTracker[bill] * bill;
+      billTracker[bill] = 0;
+    } else {
+      changeDue -= numOfBillNeeded * bill;
+      billTracker[bill] -= numOfBillNeeded;
+    }
+  }
+
+  return changeDue;
+};
+
+const lemonadeChange = function (bills) {
+  const billTracker = { 5: 0, 10: 0, 20: 0 };
+
+  for (let i = 0; i < bills.length; i += 1) {
+    let changeDue = bills[i] - 5;
+    changeDue = updateChange(changeDue, 20, billTracker);
+    changeDue = updateChange(changeDue, 10, billTracker);
+    changeDue = updateChange(changeDue, 5, billTracker);
+    if (changeDue > 0) {
+      return false;
+    }
+    billTracker[bills[i]] += 1;
+  }
+
+  return true;
+};
+
+// Sample tests:
+// console.log(lemonadeChangeSimple([5, 5, 10, 20])); // --> true
+// console.log(lemonadeChangeSimple([10])); // --> false
+// console.log(lemonadeChangeSimple([5, 10, 5, 20])); // --> true
+// console.log(lemonadeChangeSimple([20])); // --> false
+// console.log(lemonadeChangeSimple([5, 5, 5, 20])); // --> true
+// console.log(lemonadeChangeSimple([5, 5, 10, 20])); // --> true
