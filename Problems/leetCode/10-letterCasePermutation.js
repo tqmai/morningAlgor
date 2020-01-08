@@ -23,5 +23,5 @@ Note:
  * @return {string[]}
  */
 const letterCasePermutation = function(str) {
-    
+   
 };
