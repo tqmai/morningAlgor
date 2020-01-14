@@ -21,5 +21,24 @@ canConstruct("aa", "aab") -> true
  * @return {boolean}
  */
 const canConstruct = function(ransomNote, magazine) {
-  
+  const letterPool = {};
+
+  for (let i = 0; i < magazine.length; i += 1) {
+    letterPool[magazine[i]] = (letterPool[magazine[i]] || 0) + 1;
+  }
+
+  for (let i = 0; i < ransomNote.length; i += 1) {
+    if (!letterPool[ransomNote[i]]) {
+      return false;
+    }
+    letterPool[ransomNote[i]] -= 1;
+  }
+
+  return true;
 };
+
+// Tests:
+
+// console.log(canConstruct('a', 'b')); // -> false
+// console.log(canConstruct('aa', 'ab')); // -> false
+// console.log(canConstruct('aa', 'aab')); // -> true
