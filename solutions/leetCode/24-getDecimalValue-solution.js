@@ -46,30 +46,41 @@ function ListNode(val) {
  * @param {ListNode} head
  * @return {number}
  */
+// const getDecimalValue = function (head) {
+//   const binaryArray = getBinaryArray(head);
+//   let result = 0;
+//   let valueToAdd = 1;
+
+//   for (let i = binaryArray.length - 1; i >= 0; i -= 1) {
+//     if (binaryArray[i] === 1) {
+//       result += valueToAdd;
+//     }
+//     valueToAdd *= 2;
+//   }
+
+//   return result;
+// };
+
+// const getBinaryArray = function (head) {
+//   const result = [];
+//   let currentNode = head;
+
+//   while (currentNode !== null) {
+//     result.push(currentNode.val);
+//     currentNode = currentNode.next;
+//   }
+
+//   return result;
+// };
+
+// 
 const getDecimalValue = function (head) {
-  const binaryArray = getBinaryArray(head);
-  let result = 0;
-  let valueToAdd = 1;
-
-  for (let i = binaryArray.length - 1; i >= 0; i -= 1) {
-    if (binaryArray[i] === 1) {
-      result += valueToAdd;
-    }
-    valueToAdd *= 2;
-  }
-
-  return result;
-};
-
-const getBinaryArray = function (head) {
-  const result = [];
   let currentNode = head;
-
-  while (currentNode !== null) {
-    result.push(currentNode.val);
+  let result = 0;
+  while (currentNode) {
+    result = result * 2 + currentNode.val;
     currentNode = currentNode.next;
   }
-
   return result;
 };
 
