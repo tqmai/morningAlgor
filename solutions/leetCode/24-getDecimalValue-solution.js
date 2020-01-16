@@ -76,7 +76,7 @@ function ListNode(val) {
 // 
 const getDecimalValue = function (head) {
   let currentNode = head;
-  let result = 0;
+  let result = 0; // 21
   while (currentNode) {
     result = result * 2 + currentNode.val;
     currentNode = currentNode.next;
