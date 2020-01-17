@@ -37,19 +37,19 @@ function ListNode(val) {
  * @return {ListNode}
  */
 // O(n) time/space
-// const middleNodeLinearSpace = function (head) {
-//   let count = 0; // count will be 1 larger than length of linked list
-//   const tracker = {};
-//   let currentNode = head;
+const middleNodeLinearSpace = function (head) {
+  let count = 0; // count will be 1 larger than length of linked list
+  const tracker = {};
+  let currentNode = head;
 
-//   while (currentNode !== null) {
-//     count += 1;
-//     tracker[count] = currentNode;
-//     currentNode = currentNode.next;
-//   }
+  while (currentNode !== null) {
+    count += 1;
+    tracker[count] = currentNode;
+    currentNode = currentNode.next;
+  }
 
-//   return tracker[Math.ceil((count + 1) / 2)];
-// };
+  return tracker[Math.ceil((count + 1) / 2)];
+};
 
 // add +1 to count before dividing by 2 and ceiling, this works to get center or center +1 node
 
