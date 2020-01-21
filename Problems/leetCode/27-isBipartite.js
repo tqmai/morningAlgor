@@ -28,7 +28,7 @@ The graph looks like this:
 |  \ |
 3----2
 We cannot find a way to divide the set of nodes into two independent subsets.
- 
+
 
 Note:
 
