@@ -27,11 +27,33 @@ function TreeNode(val) {
   this.left = null;
   this.right = null;
 }
+
+
 /**
  * @param {TreeNode} root
  * @return {TreeNode}
  */
-const invertTree = function(root) {
+const invertTreeRecursive = function(root) {
+  // if root doesn't exist, then return null
+  if (!root) {
+    return null;
+  }
+
+  // swap the positions of root.left and root.right
+  [root.left, root.right] = [root.right, root.left];
+
+  // recursive call invertTree on both sides
+  invertTree(root.right);
+  invertTree(root.left);
+
+  return root;
+};
+
+/**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+const invertTreeIterative = function(root) {
   if (root === null) {
     return null;
   }
@@ -42,11 +64,8 @@ const invertTree = function(root) {
   while (stack.length > 0) {
     currentNode = stack.pop();
     if (currentNode !== null) {
-      const temp = currentNode.left;
-      currentNode.left = currentNode.right;
-      currentNode.right = temp;
-      stack.push(currentNode.left);
-      stack.push(currentNode.right);
+      [currentNode.left, currentNode.right] = [currentNode.right, currentNode.left];
+      stack.push(currentNode.left, currentNode.right);
     }
   }
 
