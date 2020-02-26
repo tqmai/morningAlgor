@@ -37,5 +37,5 @@ Note:
  * @return {ListNode}
  */
 const middleNode = function(head) {
-  
+
 };
