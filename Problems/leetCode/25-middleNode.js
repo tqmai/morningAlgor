@@ -37,26 +37,5 @@ Note:
  * @return {ListNode}
  */
 const middleNode = function(head) {
-  // determine the length of the linked list
-  let listLength = 0;
-  let curNode = head;
 
-  // iterate through the linked list to determine length
-  while (curNode) {
-    listLength += 1;
-    curNode = curNode.next;
-  }
-
-  // reset curNode to head
-  curNode = head;
-
-  // determine what is half of that number
-  const halfListLength = Math.floor(listLength / 2);
-
-  // iterate through the list a second time and return the correct node
-  for (let i = 0; i < halfListLength; i += 1) {
-    curNode = curNode.next;
-  }
-
-  return curNode;
 };
